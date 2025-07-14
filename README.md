@@ -32,10 +32,8 @@ Currently supported (all are optional):
 - port          ->  will default to 3000
 - subdomain     ->  will default to random value
 - logs          ->  save logs to a different folder. Start from base directory (defaults to the github repo folder)
-
-                    NB: Make sure to always end the path with '/'
-                    
-                    NB: will create a new /logs folder if not created yet
+NB: Make sure to always end the path with '/'
+NB: will create a new /logs folder if not created yet
 
 example with flags:
 ``` bash
