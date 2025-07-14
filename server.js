@@ -2,8 +2,7 @@ import express from 'express';
 import { publicIp, publicIpv4, publicIpv6 } from 'public-ip';
 import bodyParser from 'body-parser'; // to handle form-data requests
 import { XMLValidator, XMLParser } from 'fast-xml-parser'; // to validate XML data
-
-
+import localtunnel from 'localtunnel'; // to expose the server to the internet
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -61,6 +60,15 @@ app.post('/webhook', async (req, res) => {
     });
 });
 
+// GET endpoint for testing
+app.get('/webhook', (req, res) => {
+    return res.status(200).json({
+        status: 'online',
+        message: 'Webhook server is running',
+        timestamp: new Date().toISOString()
+    });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
     return res.status(200).json({
@@ -71,12 +79,19 @@ app.get('/health', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+    // setup localtunnel to expose the server to the internet
+    const tunnel = await localtunnel({ port: PORT, subdomain: 'qargo' });
+
+    console.log("----------------");
+    console.log('Local testing:');
     console.log(`🚀 Webhook server is running on port ${PORT}`);
     console.log(`📡 Webhook endpoint: http://localhost:${PORT}/webhook`);
     console.log(`❤️ Health check: http://localhost:${PORT}/health`);
-    console.log(`🌐 Run "lt --port ${PORT}" in order to make the webhook publicly accessible`);
+    console.log("----------------");
+    console.log('public url:');
+    console.log(`🌐 Localtunnel URL: ${tunnel.url}/webhook`);
     // log password 
-    console.log(`🔑 Password: ${PUBLIC_IP}`);
+    console.log(`🔑 When accessing in browser, Password: ${PUBLIC_IP}`);
     console.log('Press Ctrl+C to stop the server\n');
 });

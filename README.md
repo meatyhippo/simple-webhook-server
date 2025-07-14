@@ -11,6 +11,11 @@ A simple Node.js webhook server built with Express.js that receives JSON message
 
 ## Setup
 
+0. Install npm
+```bash
+brew install npm
+```
+
 1. Install dependencies:
 ```bash
 npm install
@@ -51,7 +56,7 @@ curl -X POST https://your-tunnel-url.loca.lt/webhook \
 
 ### Quick Setup with localtunnel (Free)
 1. Terminal 1: `npm start`
-2. Terminal 2: `lt --port 3000`
+2. Terminal 2: `lt --port 3000 --subdomain qargo`
 3. Use the displayed URL for external webhooks
 
 ### Making it accessible from the internet
