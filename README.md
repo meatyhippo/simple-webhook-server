@@ -38,6 +38,8 @@ Currently supported (all are optional):
 example with flags:
 ``` bash
 npm start -- --p=3000 --subdomain=listener --logs=/Users/johndoe/Documents/
+```
+
 ## Endpoints
 
 - `POST /webhook` - Main webhook endpoint for receiving JSON data
