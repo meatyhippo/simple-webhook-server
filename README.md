@@ -1,33 +1,44 @@
 # Webhook Server
 
-A simple Node.js webhook server built with Express.js that receives JSON messages and logs them to the terminal.
+A simple Node.js webhook server built with Express.js that receives messages and logs them to the terminal.
 
 ## Features
 
 - Single webhook endpoint: POST (`/webhook`)
-- Logs incoming JSON messages with timestamps and client IP
+- Logs incoming headers
+- Logs incoming body with timestamps and client IP
 - Health check endpoint for monitoring
 - Easy to start/stop on demand
 
 ## Setup
 
-0. Install npm
+### 0. Install npm
 ```bash
 brew install npm
 ```
 
-1. Install dependencies:
+### 1. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Start the server:
+### 2. Start the server:
 ```bash
 npm start
 ```
 
-The server will run on `http://localhost:3000` by default.
+### 2.1 (optional) Add flags to the start command.
+Currently supported (all are optional):
+- port          ->  will default to 3000
+- subdomain     ->  will default to random value
+- logs          ->  save logs to a different folder. Start from base directory (defaults to the github repo folder)
+                    note: will create a new /logs folder if not created yet
 
+example with flags:
+``` bash
+npm start -- --p=3000 --subdomain=listener
+```
+'/Users/rubenvanhee/Documents/Qargo/webhook server/logs'
 ## Endpoints
 
 - `POST /webhook` - Main webhook endpoint for receiving JSON data
@@ -45,7 +56,6 @@ curl -X POST http://localhost:3000/webhook \
 ```
 
 ### Testing from external sources
-Once you've exposed your server using one of the tunnel options below, external machines can send webhooks:
 
 Example with localtunnel URL:
 ```bash
@@ -54,23 +64,7 @@ curl -X POST https://your-tunnel-url.loca.lt/webhook \
   -d '{"message": "External webhook!", "source": "internet"}'
 ```
 
-### Quick Setup with localtunnel (Free)
-1. Terminal 1: `npm start`
-2. Terminal 2: `lt --port 3000 --subdomain qargo`
-3. Use the displayed URL for external webhooks
-
-### Making it accessible from the internet
-
-To receive webhooks from external services, you'll need to expose your local server to the internet. Here are the best free options:
-
-#### Option 1: Using localtunnel (Recommended - Free & No Signup)
-1. Install localtunnel: `npm install -g localtunnel`
-2. Start your webhook server: `npm start`
-3. In another terminal: `lt --port 3000`
-4. Use the provided localtunnel URL for your webhook endpoint (e.g., `https://xyz-123.loca.lt/webhook`)
-
-**Note**: The URL changes each time you restart localtunnel, but it's completely free and works immediately.
-
+Or use your favourite API client, like Postman or insomnia.
 
 ## Example Output
 
