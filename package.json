@@ -15,7 +15,9 @@
   "author": "Ruben Van Hee",
   "type": "module",
   "dependencies": {
+    "body-parser": "^2.2.0",
     "express": "^4.18.2",
+    "fast-xml-parser": "^5.2.5",
     "public-ip": "^7.0.1"
   }
 }
