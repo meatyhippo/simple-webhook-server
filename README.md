@@ -42,8 +42,8 @@ curl -X POST http://localhost:3000/webhook \
 ### Testing from external sources
 Once you've exposed your server using one of the tunnel options below, external machines can send webhooks:
 
+Example with localtunnel URL:
 ```bash
-# Example with localtunnel URL
 curl -X POST https://your-tunnel-url.loca.lt/webhook \
   -H "Content-Type: application/json" \
   -d '{"message": "External webhook!", "source": "internet"}'
