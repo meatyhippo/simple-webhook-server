@@ -23,6 +23,7 @@ npm install
 ```
 
 ### 2. Start the server:
+This will start the server without any of the fancy adjustments listed below
 ```bash
 npm start
 ```
