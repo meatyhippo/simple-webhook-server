@@ -12,18 +12,20 @@ A simple Node.js webhook server built with Express.js that receives messages and
 
 ## Setup
 
-### 0. Install npm
+### 0. Install npm (only need to do this step once)
 ```bash
 brew install npm
 ```
 
-### 1. Install dependencies:
+### 1. Install dependencies: (only need to do this step once)
 ```bash
 npm install
 ```
 
 ### 2. Start the server:
+Make sure your terminal is active in the folder of the server.js file
 This will start the server without any of the fancy adjustments listed below
+
 ```bash
 npm start
 ```
@@ -35,10 +37,11 @@ Currently supported (all are optional):
 - logs          ->  save logs to a different folder. Start from base directory (defaults to the github repo folder)
 NB: Make sure to always end the path with '/'
 NB: will create a new /logs folder if not created yet
+- token-response  -> sets the response for the token endpoint
 
 example with flags:
 ``` bash
-npm start -- --p=3000 --subdomain=listener --logs=/Users/johndoe/Documents/
+npm start -- --p=3000 --subdomain=listener --logs=/Users/johndoe/Documents/ --token-response=ey...
 ```
 
 ## Endpoints
