@@ -1,5 +1,5 @@
 import express from 'express';
-import { logToConsole, logToFile } from '../middlewares/logging.js';
+import { logToConsole, logToFile } from '../middlewares/logger.js';
 
 const router = express.Router();
 

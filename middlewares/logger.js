@@ -17,7 +17,8 @@ const logToConsole = (req, responseBody) => {
     const responseHeaders = JSON.stringify(req.headers, null, 2);
     console.log('\n=== WEBHOOK RECEIVED ===');
     console.log(`Timestamp: ${timestamp}`);
-    console.log(`Client IP: ${clientIP}`);
+    console.log(`Endpoint: ${req.path}`);
+    console.log(`Method: ${req.method}`);
     console.log('Headers:', responseHeaders);
     console.log('Body:', responseBody);
     console.log('========================\n');

@@ -2,4 +2,4 @@
 
 # capture flags: -port, -subdomain, -logs, -token-response and check if they are valid
 
-cd $HOME'/Documents/Qargo/webhook server' || exit 1
+cd $HOME'/Documents/Qargo/simple-webhook-server' || exit 1

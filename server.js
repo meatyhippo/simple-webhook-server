@@ -12,7 +12,7 @@ const passedArgs = {};
 process.argv.forEach(flag => {
     if (flag.includes('--')) {
         const splitFlag = flag.split("=");
-        passedArgs[splitFlag[0]] = splitFlag[1]
+        passedArgs[splitFlag[0]] = splitFlag[1] || true; // if no value is provided, set it to true
     }
 });
 
@@ -22,9 +22,27 @@ const PORT = passedArgs["--p"] || 3000;
 const subdomain = passedArgs["--subdomain"] || undefined;
 const PUBLIC_IP = await publicIpv4() || process.env.PUBLIC_IP;
 const tokenResponse = passedArgs["--token-response"] || 'bla bla bla';
+const helpRequested = passedArgs["--help"] ;
 //const logsPath = req.passedArgs["--logs"] || './';
 //console.log(`Logs will be saved to: ${logsPath}`);
 
+// Display help if requested
+if (helpRequested) {
+    console.log(`
+Usage: node server.js [options]
+Options:
+    --help               Show this help message
+    --port=<port>        Set the port for the server (default: 3000)
+    --subdomain=<name>   Set the subdomain for localtunnel (default: random value)
+    --logs=<path>        Set the path for saving logs (default: current directory)
+    --token-response=<response>  Set the response for the token endpoint (default: 'bla bla bla')
+
+Example:
+    npm start -- --p=3000 --subdomain=listener --logs=/Users/johndoe/Documents/ --token-response=ey...
+
+`);
+    process.exit(0);
+};
 
 app.use((req, res, next) => {
     req.passedArgs = passedArgs; // attach passed arguments to the request object

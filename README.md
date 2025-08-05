@@ -32,12 +32,13 @@ npm start
 
 ### 2.1 (optional) Add flags to the start command.
 Currently supported (all are optional):
-- port          ->  will default to 3000
-- subdomain     ->  will default to random value
-- logs          ->  save logs to a different folder. Start from base directory (defaults to the github repo folder)
+- --help          ->  will print out these possible flags
+- --port          ->  will default to 3000
+- --subdomain     ->  will default to random value
+- --logs          ->  save logs to a different folder. Start from base directory (defaults to the github repo folder)
 NB: Make sure to always end the path with '/'
 NB: will create a new /logs folder if not created yet
-- token-response  -> sets the response for the token endpoint
+- --token-response  -> sets the response for the token endpoint
 
 example with flags:
 ``` bash
