@@ -7,4 +7,5 @@ yarn-error.log*
 .env
 .DS_Store
 bin/test.js
-log/*
+logs/*
+~

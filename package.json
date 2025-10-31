@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "qargo": "npm start -- --p=3000 --subdomain=qargo --logs=~/Users/johndoe/Documents/"
   },
   "keywords": [
     "webhook",
