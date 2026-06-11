@@ -53,7 +53,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // to handle URL-encoded dat
 
 
 // set routes
-app.use(webhookRoutes, tokenRoutes, healthRoutes);
+app.use(tokenRoutes, healthRoutes, webhookRoutes);
 
 // Start server
 app.listen(PORT, async () => {

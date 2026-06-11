@@ -1,12 +1,12 @@
 import fs from 'fs';
 
-const logToFile = (req, type, responseBody) => {
+const logToFile = (req, type, fileType = "txt", responseBody) => {
     const timestamp = new Date().toISOString();
     const clientIP = req.ip || req.connection.remoteAddress;
     const responseHeaders = JSON.stringify(req.headers, null, 2);
     const logsPath = req.passedArgs["--logs"] || './';
     // save response to a file
-    const logFilePath = `${logsPath}logs/${type}_${timestamp.replace(/[:.]/g, '-')}.log`;
+    const logFilePath = `${logsPath}logs/${type}_${timestamp.replace(/[:.]/g, '-')}.${fileType}`;
     fs.mkdirSync(`${logsPath}logs`, { recursive: true }); // ensure logs directory exists
     fs.writeFileSync(logFilePath, `Timestamp: ${timestamp}\nClient IP: ${clientIP}\nHeaders: ${responseHeaders}\nBody: ${JSON.stringify(responseBody, null, 2)}`, 'utf8');
 };
